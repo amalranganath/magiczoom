@@ -1,5 +1,6 @@
 $(function(){
-    $( '.thumb').magicZoom({
-			activeThumb: 1
+    $( '#magic_zoom img').magicZoom({
+			activeThumb: 1,
+			thumpPosition:"VR"
 	});
 });

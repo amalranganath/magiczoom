@@ -1,20 +1,32 @@
 (function ( $ ) {
-    var PreviewObj = new Object;
+    var PreviewObj = new Object,
+        Settings = new Object,
+        spacing = 5, widthMax = 0;
 
     $.fn.magicZoom = function(options) {
         var settings = $.extend({
-            activeThumb: 0
+            activeThumb:    0, 
+            thumpPosition:  "VR"
         }, options );
 
-        var aThumb = this[settings.activeThumb];
+        var aThumb = this[settings.activeThumb], widthAll = new Array();
 
-        $('<div id=preview /><div id=zoom />').appendTo($('#magic_zoom'));
+        this.each(function() {widthAll.push(this.width)});
+        widthMax = Math.max.apply(Math, widthAll);
 
+        $(this).remove();
+
+        Settings = settings;
+
+        init(this);
+        
+        
         return this.each(function() {
             if(this === aThumb) {
                 PreviewObj.fileName = $(this).data( "zoomed" );
                 $(this).addClass('active');
-                createPreview();}
+                createPreview();
+            }
 
             $(this).on("click", function(event){
                 PreviewObj.fileName = $(this).data( "zoomed" );
@@ -27,18 +39,50 @@
         });
     };
 
+    function init(imgs) {
+
+        /*$('.message').css({'position': 'absolute', 'margin': '0', 'text-align': 'center', 'vertical-align': 'middle'});
+        $('#zoom').css({'position': 'absolute', 'visibility': 'hidden', 'overflow': 'hidden'});
+        $('.preview').css({'position': 'absolute'});
+        $('.zoom').css({'position': 'absolute'});*/
+
+
+
+        if (Settings.thumpPosition == "VR" || Settings.thumpPosition == "VRB") {
+            $('<div id=list /><div id=preview /><div id=zoom />').appendTo($('#magic_zoom'));
+            $('#list').css({'width':widthMax+2*spacing, 'float':'left'});
+            $('#preview').css('float','left');
+        } else if (Settings.thumpPosition == "HB") {
+            $('<div id=preview /><div id=list /><div id=zoom />').appendTo($('#magic_zoom'));
+        } else if (Settings.thumpPosition == "HT" || Settings.thumpPosition == "HTB") {
+            $('<div id=list /><div id=preview /><div id=zoom />').appendTo($('#magic_zoom'));
+        }
+
+        $(imgs).appendTo($('#list'));
+
+        if(Settings.thumpPosition == "VR" || Settings.thumpPosition == "VRB") 
+            $(imgs).css({'display':'block', 'margin': '0 '+2*spacing+'px '+spacing+'px 0'});
+        else if (Settings.thumpPosition == "HB") 
+            $(imgs).css({'margin': spacing+'px '+spacing+'px  '+2*spacing+'px 0'});
+        else if (Settings.thumpPosition == "HT" || Settings.thumpPosition == "HTB")
+            $(imgs).css({'margin': '0 '+spacing+'px '+spacing+'px 0'});
+    }
+
     function createPreview() {
         var url = 'img/vincentfoutnier/'+PreviewObj.fileName+'.jpg',
             previewImg = $('<img class=preview src="'+url+'">');
-            previewImg.css('visibility','hidden');
+            previewImg.css({'visibility':'hidden'});
         previewImg.appendTo($('#preview'));
 
         $(previewImg).one('load', function() {
-            var w = this.width, h = this.height, mr = parseInt($('#magic_zoom ul').css('margin-right').replace("px", "")), off = $('#preview').offset().left;
+            var w = this.width, h = this.height, offLeft = $('#preview').offset().left, offTop = $('#preview').offset().top;
             PreviewObj.previewImgW = w;
             PreviewObj.previewImgH = h;
-            $('#preview').css({'width': w+mr, 'height' : h});
-            $('#zoom').css({'width' : w , 'height' : h, 'left' : off + w + mr});
+            $('#preview').css({'width': w, 'height' : h});
+            if(Settings.thumpPosition == "VRB" || Settings.thumpPosition == "HTB") 
+                $('#zoom').css({'width' : w , 'height' : h, 'left' : offLeft, 'top' : offTop+h + 2*spacing});
+            else 
+                $('#zoom').css({'width' : w , 'height' : h, 'left' : offLeft + w + 2*spacing, 'top': offTop});
             initZoom();
             previewImg.css({'display':'none', 'visibility':'visible'});
             previewImg.fadeIn(function() { if($('.preview').length>1) {

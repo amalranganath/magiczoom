@@ -95,26 +95,12 @@ textarea {
 
 body {padding: 50px; background-color: #eee;}
 
+#magic_zoom {float: left; margin: 0 10px 10px 0; }
 
-#magic_zoom ul {
-    list-style: none;
-    margin:  0 20px 0 0;
-    padding: 0;
-}
-
-#magic_zoom ul li {
-    margin: 0 0 5px 0;
-    cursor: pointer;
-}
-
-#magic_zoom ul, #preview {
-    float: left;
-}
-
-.preview, #zoom, .zoom, .message {
+.preview, #zoom, .zoom/**/, .message {
     position: absolute;
 }
-.message {
+/**/.message {
     margin: 0;
     text-align: center;
     vertical-align: middle;
@@ -125,8 +111,8 @@ body {padding: 50px; background-color: #eee;}
     overflow: hidden;
 }
 
-.thumb { border: 1px solid #bbb;}
-.thumb.active { border: 1px solid #000;}
+#list img { border: 1px solid #bbb;}
+#list img.active { border: 1px solid #000;}
 
 
 /* ==========================================================================
