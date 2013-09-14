@@ -1,6 +1,7 @@
 (function ( $ ) {
     var PreviewObj = new Object,
         Settings = new Object,
+        coord = new Array,
         spacing = 5, widthMax = 0;
 
     $.fn.magicZoom = function(options) {
@@ -45,7 +46,6 @@
         $('#zoom').css({'position': 'absolute', 'visibility': 'hidden', 'overflow': 'hidden'});
         $('.preview').css({'position': 'absolute'});
         $('.zoom').css({'position': 'absolute'});*/
-
 
 
         if (Settings.thumpPosition == "VR" || Settings.thumpPosition == "VRB") {
@@ -147,10 +147,21 @@
                 y = event.pageY-$(this).offset().top,
                 zoomedX = -Math.round(x*(PreviewObj.zoomImgW-PreviewObj.previewImgW)/PreviewObj.previewImgW),
                 zoomedY = -Math.round(y*(PreviewObj.zoomImgH-PreviewObj.previewImgH)/PreviewObj.previewImgH);
-            $('.zoom').css({'left':zoomedX, 'top':zoomedY});
+                //coord.push({'x':zoomedX, 'y':zoomedY});
+            //$('.zoom').css({'left':zoomedX, 'top':zoomedY});
+            $('.zoom').animate({
+                left: zoomedX,
+                top: zoomedY
+                }, 1);
+
+            //if(coord.length>3) coord.splice(0, 1);
+            //console.log(coord[0]['x'], coord.length);
+            //if( coord.length ==3 /*&&   coord[1] ==  coord[2] coord[1]['x']==coord[2]['x'] && coord[1]['y']==coord[2]['y'] */) console.log(coord[0], coord[0], coord[0]);
+
+            
         });
 
-        $(".preview").mousemove(function(event) {
+        $(".preview").mouseover(function(event) {
             $('#zoom').css('visibility','visible');
         });
 

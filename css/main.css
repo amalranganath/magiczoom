@@ -97,10 +97,10 @@ body {padding: 50px; background-color: #eee;}
 
 #magic_zoom {float: left; margin: 0 10px 10px 0; }
 
-.preview, #zoom, .zoom/**/, .message {
+.preview, #zoom, .zoom, .message {
     position: absolute;
 }
-/**/.message {
+.message {
     margin: 0;
     text-align: center;
     vertical-align: middle;
@@ -111,7 +111,7 @@ body {padding: 50px; background-color: #eee;}
     overflow: hidden;
 }
 
-#list img { border: 1px solid #bbb;}
+#list img { border: 1px solid #bbb; cursor: pointer;}
 #list img.active { border: 1px solid #000;}
 
 
