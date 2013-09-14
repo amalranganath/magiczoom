@@ -147,17 +147,7 @@
                 y = event.pageY-$(this).offset().top,
                 zoomedX = -Math.round(x*(PreviewObj.zoomImgW-PreviewObj.previewImgW)/PreviewObj.previewImgW),
                 zoomedY = -Math.round(y*(PreviewObj.zoomImgH-PreviewObj.previewImgH)/PreviewObj.previewImgH);
-                //coord.push({'x':zoomedX, 'y':zoomedY});
-            //$('.zoom').css({'left':zoomedX, 'top':zoomedY});
-            $('.zoom').animate({
-                left: zoomedX,
-                top: zoomedY
-                }, 1);
-
-            //if(coord.length>3) coord.splice(0, 1);
-            //console.log(coord[0]['x'], coord.length);
-            //if( coord.length ==3 /*&&   coord[1] ==  coord[2] coord[1]['x']==coord[2]['x'] && coord[1]['y']==coord[2]['y'] */) console.log(coord[0], coord[0], coord[0]);
-
+            $('.zoom').css({'left':zoomedX, 'top':zoomedY});
             
         });
 
