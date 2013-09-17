@@ -2,7 +2,8 @@
     var PreviewObj = new Object,
         Settings = new Object,
         coord = new Array,
-        spacing = 5, widthMax = 0;
+        spacing = 5, widthMax = 0,
+        stop_timeout = false;
 
     $.fn.magicZoom = function(options) {
         var settings = $.extend({
@@ -147,10 +148,9 @@
                 y = event.pageY-$(this).offset().top,
                 zoomedX = -Math.round(x*(PreviewObj.zoomImgW-PreviewObj.previewImgW)/PreviewObj.previewImgW),
                 zoomedY = -Math.round(y*(PreviewObj.zoomImgH-PreviewObj.previewImgH)/PreviewObj.previewImgH);
-            $('.zoom').css({'left':zoomedX, 'top':zoomedY});
-            
+                TweenLite.to($('.zoom'), 0.2, { css: { left: zoomedX, top: zoomedY }});
         });
-
+        
         $(".preview").mouseover(function(event) {
             $('#zoom').css('visibility','visible');
         });
