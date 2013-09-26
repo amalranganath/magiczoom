@@ -93,26 +93,61 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-body {padding: 50px; background-color: #eee;}
+body {background-color: #eee; font: 13px/22px "HelveticaNeueW01-55Roma",serif; padding: 0 50px; color: #999;}
 
-#magic_zoom {float: left; margin: 0 10px 10px 0; }
+body, html {height: 100%;}
 
-.preview, #zoom, .zoom, .message {
-    position: absolute;
-}
-.message {
-    margin: 0;
+header {margin: 0; padding: 50px 0;}
+
+header h1 {color: #000;
+    display: block;
+    font: 53px/60px "BasicCommercialW01-Blk",Helvetica,sans-serif;
+    letter-spacing: -0.05em;
+    margin: 0 0 20px 0;
     text-align: center;
-    vertical-align: middle;
+}
+header .subline {color: #999;
+    display: block;
+    font-family: 'Excelsior W01 Italic';
+    font-size: 18px;
+    text-align: center;
 }
 
-#zoom {
-    visibility: hidden;
-    overflow: hidden;
-}
+h2 {color: #0b0; font: 23px/23px "Excelsior W01 Italic",serif;}
 
-#list img { border: 1px solid #bbb; cursor: pointer;}
-#list img.active { border: 1px solid #000;}
+h2 span {color: #999; font: 13px/22px "HelveticaNeueW01-55Roma",serif;}
+
+header h2 {text-align: center; }
+
+h3 { color: #0b0; text-transform: uppercase; font-family: 'Excelsior W01 Italic'; font-size: 18px;font-weight: normal;}
+
+h3 span { text-transform: none; font: 13px/15px "HelveticaNeueW01-55Roma",serif; color: #999;}
+
+.magic_zoom {float: left; margin: 0 30px 10px 0; }
+
+.code {font-size: 11px; color: #666;}
+
+a {color: #999;}
+
+em {font-style: italic; color: #0b0;}
+
+#ops {float: left; margin-right: 30px; }
+
+.opt {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 2px 10px;
+    background-color: #f9f9f9;
+     width: 380px;
+    cursor: pointer;
+}
+.opt.first { margin-top: 10px;}
+.opt.last { margin-bottom: 10px; border-bottom: 1px solid #ccc; }
+.opt:hover, .opt.active {background-color: #fff; color: #0c0;}
+.opt.active {color: #0b0;}
+
+
 
 
 /* ==========================================================================

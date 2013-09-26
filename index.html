@@ -12,55 +12,59 @@
         <meta name="viewport" content="width=device-width">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
+        <link href="http://fast.fonts.com/cssapi/626e8310-ae55-4420-be19-690bf03796ba.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
     </head>
     <body>
-        <h1>Magic zoom</h1>
+        <header>
+            <h1>magic zoom</h1>
+            <span class="subline">jquery plugin to zoom the image galery</span>
 
-        <div id="magic_zoom">
-            <img src="img/vincentfoutnier/thumb_moon_valey.jpg" width=42 height=30 data-zoomed="moon_valey" alt="Moon valey">
-            <img src="img/vincentfoutnier/thumb_MDRS_2.jpg" width=42 height=30 data-zoomed="MDRS_2" alt="MDRS 2">
-            <img src="img/vincentfoutnier/thumb_MDRS_3.jpg" width=42 height=30 data-zoomed="MDRS_3" alt="MDRS 3">
-            <img src="img/vincentfoutnier/thumb_MDRS_4.jpg" width=42 height=30 data-zoomed="MDRS_4" alt="MDRS 4">
-            <!--img src="img/vincentfoutnier/thumb_MDRS_22.jpg" width=84 height=30 data-zoomed="MDRS_2" alt="MDRS 2"-->
+            <h2>Browser support: <span>FF, Chrome, IE7+, Safari, Opera</span> Dependencies: <span>juery1.9[, greensock tween library]</span> Download: <span><a href="https://github.com/tanyaka/magiczoom/blob/master/js/" target="blank">https://github.com/tanyaka/magiczoom/blob/master/js/</a></span></h2>
+
+        </header>
+
+
+        <div class="magic_zoom">
+            <!--img src="img/anastasiapeganova/thumb_Velo.jpg" width=125 height=83 data-preview="Velo.jpg"  data-zoomed="zoom_Velo.jpg" alt="MDRS 2">
+            <img src="img/anastasiapeganova/thumb_Mauerpark.jpg" width=125 height=83 data-preview="Mauerpark.jpg"  data-zoomed="zoom_Mauerpark.jpg" alt="MDRS 3">
+            <img src="img/anastasiapeganova/thumb_Cherries.jpg" width=125 height=83 data-preview="Cherries.jpg"  data-zoomed="zoom_Cherries.jpg" alt="MDRS 4"-->
+            <img src="img/vincentfoutnier/thumb_moon_valey.jpg" width="42" height="30" data-preview="moon_valey.jpg" data-zoomed="zoom_moon_valey.jpg" alt="Moon valey">
+            <img src="img/vincentfoutnier/thumb_MDRS_2.jpg" width="42" height="30" data-preview="MDRS_2.jpg" data-zoomed="zoom_MDRS_2.jpg" alt="MDRS 2">
+            <img src="img/vincentfoutnier/thumb_MDRS_3.jpg" width="42" height="30" data-preview="MDRS_3.jpg" data-zoomed="zoom_MDRS_3.jpg" alt="MDRS 3">
         </div>
 
-        <h2>Browser support: FF, Chrome, IE7+, Safari, Opera</h2>
-        <h3>JS plugin, dependancen: juery1.9, modernizr-2.6.2</h3>
-        <div>
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+        <h3>HTML: <span>You need to create a DIV with thumbnails as usual IMG tags inside this div. Put the name of the preview image in the <em>data-preview</em> and name of the corresponding zoom image in the <em>data-zoomed</em> attributs respectivly. All the images (thumbnail, preview and zoom) should be in the same folder.</span></h3>
+        <div class="code">
+            &lt;div class="magic_zoom"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="img/thumb_moon_valey.jpg" width="42" height="30" <em>data-preview</em>="moon_valey400x220.jpg"  <em>data-zoomed</em>="moon_valey1200x700.jpg" alt="Moon valey"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="img/thumb_MDRS_2.jpg" width="42" height="30" <em>data-preview</em>="MDRS_2_400x220.jpg" <em>data-zoomed</em>="MDRS_2_1200x700.jpg" alt="MDRS 2"&gt;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;img src="img/thumb_MDRS_3.jpg" width="42" height="30" <em>data-preview</em>="MDRS_3_400x220.jpg" <em>data-zoomed</em>="MDRS_3_1200x700.jpg" alt="MDRS 3"&gt;<br>
+            &lt;/div&gt;
+		</div>
+        
+        <h3>JS: <span class="code">$('.magic_zoom').magicZoom();</span></h3>
+        
+        <h3>Options:</h3>
+        
+        <em>1.</em> <span class="code">activeThumb</span>, sets preview image starting from <span class="code">0</span>. Default value <span class="code">activeThumb = 0.</span><br>
+        <em>2.</em> <span class="code">thumpPosition</span> - the dirrection (<span class="code">vertical</span> or <span class="code">horisontal</span>) and positon (to the <span class="code">right</span>, top or <span class="code">bottom</span>) of the thumbnals compare to the preview image and postion of the zoomed image (to the <span class="code">left</span> or to the <span class="code">bottom</span> from the preview):<br>
+        
+        <div id="ops">
+            <div class="opt first"><em>VR</em> - (default) thumbnails verticaly right, zoom to the left</div>
+            <div class="opt"><em>HB</em> - thumbnails horizontaly at the bottom, zoom to the left</div>
+            <div class="opt"><em>HT</em> - thumbnails horizontaly at the top, zoom to the left</div>
+            <div class="opt"><em>VRB</em> - thumbnails verticaly right, zoom to the bottom</div>
+            <div class="opt last"><em>HTB</em> - thumbnails horizontaly at the top, zoom to the bottom</div>
+        </div>
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
-
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.   
-
-Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.   
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
-
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.   
-
-Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.   
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero</div>
-
+        <h2>For Example:</h2>
+        <span class="code">$('.magic_zoom').magicZoom({<br>
+        &nbsp;&nbsp;<em>activeThumb</em>: 2,<br>
+        &nbsp;&nbsp;<em>thumpPosition</em>: "HB"<br>
+        });</span>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
